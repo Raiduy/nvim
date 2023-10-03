@@ -1,4 +1,7 @@
+vim.g.mapleader = " "
+
 vim.opt.nu = true   -- line numbers
+vim.wo.relativenumber = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -20,4 +23,3 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
-vim.g.mapleader = " "
