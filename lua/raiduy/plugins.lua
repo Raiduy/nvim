@@ -1,30 +1,25 @@
-vim.cmd [[packadd packer.nvim]]
+return {
+    {
+        'nvim-telescope/telescope.nvim', 
+        version = "0.1.3", 
+        dependencies = 'nvim-lua/plenary.nvim'
+    },
 
-return require('packer').startup(function(use)
-    -- Packer can manage itself
-    use 'wbthomason/packer.nvim'
-
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.3',
-        -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
-
-    use({ 
+    {
         "catppuccin/nvim", 
-        as = "catppuccin",
+        name = "catppuccin",
         config = function()
             vim.cmd('colorscheme catppuccin-mocha')
-        end
-    })
+        end,
+    },
 
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use('nvim-treesitter/playground')
-    use('tpope/vim-fugitive')
-    use {
+    {'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+    'nvim-treesitter/playground',
+    'tpope/vim-fugitive',
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
-        requires = {
+        dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},
             {'williamboman/mason.nvim'},
@@ -42,14 +37,14 @@ return require('packer').startup(function(use)
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
-    }
+    },
 
-    use {
+    {
         'nvim-lualine/lualine.nvim',
-        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-    }
+        dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
+    },
 
-    use {'stevearc/dressing.nvim'}
+    {'stevearc/dressing.nvim'},
 
-end)
+}
 
